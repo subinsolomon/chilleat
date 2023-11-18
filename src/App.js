@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {React ,useState}from 'react';
+import Navbar from './components/Navbar/Navbar';
+import Menu from './components/Menu/Menu';
+import Contact from './components/Contact/Contact';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './components/Login/Login';
+import AdminPage from './components/AdminPage/AdmnPage';
+import ProtectedRoute from './components/Login/ProtectedRoute';
+
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Menu />
+      <Contact />
+      {/* <Router> */}
+      {/* <Route
+          path="/login"
+          render={(props) => <Login {...props} setLoggedIn={setLoggedIn} />}
+        />
+        <ProtectedRoute
+          path="/admin"
+          component={AdminPage}
+          loggedIn={loggedIn}
+        />
+       </Router> */}
     </div>
   );
 }
