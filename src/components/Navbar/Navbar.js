@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import restaurantData from '../../restaurantData'; // Import restaurant data
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -27,11 +28,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <h1>{restaurantData.restaurantName}</h1>
+        <h1><Link to="/" className="link-style">{restaurantData.restaurantName}</Link></h1>
       </div>
       <div className="nav-links">
         <div className="dropdown">
-          <button className="dropbtn" onClick={toggleDropdown}>Menu</button>
+          <button className="dropbtn" onClick={toggleDropdown}><Link to="/menu" className="link-style">Menu</Link></button>
           {showDropdown && (
             <div className="dropdown-content">
              <ul>
@@ -45,7 +46,7 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        <a href="#contact">Contact</a>
+        <Link to="/contact" className="link-style">Contact</Link>
       </div>
     </nav>
   );

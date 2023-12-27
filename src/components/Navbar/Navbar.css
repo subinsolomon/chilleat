@@ -62,3 +62,14 @@
     border-bottom: 1px solid #ddd;
   }
   
+  /* App.css or your CSS file */
+.link-style {
+  text-decoration: none; /* Remove default underline */
+  color: inherit; /* Use default text color */
+}
+
+.link-style:hover {
+  /* Add hover styles if needed */
+  font-size: 120%;
+}
+

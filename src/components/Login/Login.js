@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    // Perform authentication logic here (e.g., send credentials to backend)
-    // For simplicity, you can simulate a successful login with hardcoded credentials
+    // Perform your authentication logic here (e.g., send credentials to backend)
 
-    if (username === 'admin' && password === 'password') {
-      // For successful login, setLoggedIn to true
-      setLoggedIn(true);
+    // For simplicity, hardcoded check (replace this with your backend logic)
+    if (username === 'user' && password === 'password') {
+      // On successful login, set isLoggedIn to true
+      setIsLoggedIn(true);
+      setError('');
     } else {
-      // Handle unsuccessful login (display error message, etc.)
-      console.log('Invalid credentials');
+      // On failed login, display error message
+      setError('Invalid credentials');
     }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div>
           <label>Username:</label>
           <input
@@ -39,6 +41,7 @@ const Login = ({ setLoggedIn }) => {
           />
         </div>
         <button type="submit">Login</button>
+        {error && <p>{error}</p>}
       </form>
     </div>
   );
